@@ -1,0 +1,6 @@
+:host {
+  display: block;
+  inline-size: 288px;
+  flex: 0 0 auto;
+  position: relative;
+}

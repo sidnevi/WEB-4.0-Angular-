@@ -1,0 +1,27 @@
+<article class="notification-card">
+  <div class="notification-header">
+    <div class="notification-copy">
+      <p class="notification-caption">{{ notification().caption }}</p>
+      <p class="notification-title" [class.wrap]="notification().wrap">{{ notification().title }}</p>
+    </div>
+
+    @if (notification().accessory) {
+      <svg class="svg-icon info-accessory" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use [attr.href]="'#icon-' + notification().asset"></use></svg>
+    } @else if (notification().progress) {
+      <svg class="svg-icon notification-progress" width="40" height="40" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use [attr.href]="'#icon-' + notification().asset"></use></svg>
+    } @else {
+      <span class="notification-avatar" [class]="notification().tone ?? ''" aria-hidden="true">
+        <svg class="svg-icon" width="20" height="20" viewBox="0 0 20 20" focusable="false"><use [attr.href]="'#icon-' + notification().asset"></use></svg>
+      </span>
+    }
+  </div>
+
+  @if (notification().priority === 'regular') {
+    <div class="hide-anchor">
+      <button class="hide-control" type="button" aria-label="Скрыть уведомление" (click)="requestHide($event)">
+        <svg class="svg-icon eye" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><use href="#icon-eye-16"></use></svg>
+        <span class="label">Скрыть</span>
+      </button>
+    </div>
+  }
+</article>
